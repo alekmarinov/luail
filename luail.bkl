@@ -1,0 +1,27 @@
+<?xml version="1.0" ?> 
+
+<makefile>
+	<set var="LUAIL_DIR">$(LRUN_C_MODULES_DIR)/gui/luail</set>
+	<set var="LUAIL_SRC">$(LUAIL_DIR)</set>
+	<set var="USE_ILU" cond="WITH_ILU=='1'">1</set>
+	<set var="USE_ILUT" cond="WITH_ILUT=='1'">1</set>
+
+	<dll id="luail" template="simple">
+		<include>$(LUA_INC)</include>
+		<include>$(DEVIL_INC)</include>
+		<sources>
+			$(LUAIL_SRC)/luail.c
+			$(LUAIL_SRC)/luailu.c
+			$(LUAIL_SRC)/luailut.c
+		</sources>
+		<library>liblua</library>
+		<lib-path>$(DEVIL_LIB)</lib-path>
+		<sys-lib>DevIL</sys-lib>
+		<sys-lib cond="USE_ILU=='1'">ILU</sys-lib>
+		<sys-lib cond="USE_ILUT=='1'">ILUT</sys-lib>
+		<define cond="FORMAT in ['msvs2003prj','msvs2005prj','msvs2008prj']">_CRT_SECURE_NO_WARNINGS</define>
+		<define cond="PLATFORM_WIN32=='1'">_WIN32</define>
+		<define cond="USE_ILU=='1'">WITH_ILU</define>
+		<define cond="USE_ILUT=='1'">WITH_ILUT</define>
+	</dll>
+</makefile>
