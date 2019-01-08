@@ -43,5 +43,4 @@ interest to LuaDevIL.
 
 -- PS:
 Don't hesitate to contact me for bugs and requests.
-Project Home: http://luadevil.luaforge.net/
 Author:       Alexander Marinov (alekmarinov@gmail.com)
